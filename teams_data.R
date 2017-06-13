@@ -61,7 +61,7 @@ find_teamr_id_by_name = function(n) {
 }
 
 default_team = find_team_by_name("MIN")
-default_years = as.character(default_team$min_year:default_player$max_year)
+default_years = as.character(default_team$min_year:default_team$max_year)
 default_seasons = as.character(season_strings[default_years])
 default_season = rev(default_seasons)[1]
 
