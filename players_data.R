@@ -19,7 +19,6 @@ names(players) = tolower(players_data$resultSets$headers[[1]])
 
 players = mutate(players,
   person_id = as.numeric(person_id),
-  rosterstatus = !!as.numeric(rosterstatus),
   from_year = as.numeric(from_year),
   to_year = as.numeric(to_year),
   team_id = as.numeric(team_id)
