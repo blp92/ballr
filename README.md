@@ -12,7 +12,7 @@ You can run BallR as on your own machine by pasting the following code into the 
 packages = c("shiny", "ggplot2", "hexbin", "dplyr", "httr", "jsonlite")
 install.packages(packages, repos = "https://cran.rstudio.com/")
 library(shiny)
-runGitHub("ballr", "toddwschneider")
+runGitHub("ballr", "blp92")
 ```
 
 ## Screenshot
