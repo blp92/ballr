@@ -12,6 +12,7 @@ source("fetch_shots.R")
 source("hex_chart.R")
 source("scatter_chart.R")
 source("heatmap_chart.R")
+source("teams_data.R")
 
 shinyUI(
   fixedPage(
