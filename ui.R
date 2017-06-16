@@ -87,7 +87,7 @@ shinyUI(
             
           selectInput(inputId = "player_name",
                       label = "Player2",
-                      choices = c("Enter a player..." = "", available_players$name),
+                      choices = c("Enter a player..." = "", c("--none--", available_players$name),
                       selected = default_player2$name,
                       selectize = FALSE),
 
