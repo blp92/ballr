@@ -1,0 +1,31 @@
+#An example of a working request for a lineup shotchart
+
+CHA_starters <- "201587-203077-202689-101107-203469"
+CHA_id <- "1610612766"
+lineup_request = GET(
+  "http://stats.nba.com/stats/shotchartlineupdetail",
+  query = list(
+    LeagueID = "00",
+    Season = "2016-17",
+    SeasonType = "Regular Season",
+    TeamID = CHA_id,
+    Outcome = "",
+    Location = "",
+    Month = 0,
+    SeasonSegment = "",
+    DateFrom = "",
+    DateTo = "",
+    OpponentTeamID = 0,
+    VsConference = "",
+    VsDivision = "",
+    GameSegment = "",
+    Period = 0,
+    LastNGames = 0,
+    GameID = "",
+    GROUP_ID = CHA_starters,
+    ContextMeasure = "FGA",
+    ContextFilter = ""
+  ),
+  add_headers(request_headers)
+)
+
