@@ -1,4 +1,4 @@
-fetch_shots_by_player_id_and_season = function(player_id, season) {
+fetch_shots_by_player_id_and_season = function(player_id, player2_id, player3_id, player4_id, player5_id, season) {
   req(player_id, season)
 
   request = GET(
@@ -79,6 +79,132 @@ fetch_shots_by_player_id_and_season = function(player_id, season) {
 
   return(list(player = shots, league_averages = league_averages))
 }
+
+
+
+  if(player2_id) {
+    request2 = GET(
+      "http://stats.nba.com/stats/shotchartdetail",
+      query = list(
+        PlayerID = player_id,
+        PlayerPosition = "",
+        Season = season,
+        ContextMeasure = "FGA",
+        DateFrom = "",
+        DateTo = "",
+        GameID = "",
+        GameSegment = "",
+        LastNGames = 0,
+        LeagueID = "00",
+        Location = "",
+        Month = 0,
+        OpponentTeamID = 0,
+        Outcome = "",
+        Period = 0,
+        Position = "",
+        RookieYear = "",
+        SeasonSegment = "",
+        SeasonType = "Regular Season",
+        TeamID = 0,
+        VsConference = "",
+        VsDivision = ""
+      ),
+      add_headers(request_headers)
+    )
+  }
+
+  if(player3_id) {
+    request3 = GET(
+      "http://stats.nba.com/stats/shotchartdetail",
+      query = list(
+        PlayerID = player_id,
+        PlayerPosition = "",
+        Season = season,
+        ContextMeasure = "FGA",
+        DateFrom = "",
+        DateTo = "",
+        GameID = "",
+        GameSegment = "",
+        LastNGames = 0,
+        LeagueID = "00",
+        Location = "",
+        Month = 0,
+        OpponentTeamID = 0,
+        Outcome = "",
+        Period = 0,
+        Position = "",
+        RookieYear = "",
+        SeasonSegment = "",
+        SeasonType = "Regular Season",
+        TeamID = 0,
+        VsConference = "",
+        VsDivision = ""
+      ),
+      add_headers(request_headers)
+    )
+  }
+
+  if(player4_id) {
+    request4 = GET(
+      "http://stats.nba.com/stats/shotchartdetail",
+      query = list(
+        PlayerID = player_id,
+        PlayerPosition = "",
+        Season = season,
+        ContextMeasure = "FGA",
+        DateFrom = "",
+        DateTo = "",
+        GameID = "",
+        GameSegment = "",
+        LastNGames = 0,
+        LeagueID = "00",
+        Location = "",
+        Month = 0,
+        OpponentTeamID = 0,
+        Outcome = "",
+        Period = 0,
+        Position = "",
+        RookieYear = "",
+        SeasonSegment = "",
+        SeasonType = "Regular Season",
+        TeamID = 0,
+        VsConference = "",
+        VsDivision = ""
+      ),
+      add_headers(request_headers)
+    )
+  }
+
+  if(player5_id) {
+    request5 = GET(
+      "http://stats.nba.com/stats/shotchartdetail",
+      query = list(
+        PlayerID = player_id,
+        PlayerPosition = "",
+        Season = season,
+        ContextMeasure = "FGA",
+        DateFrom = "",
+        DateTo = "",
+        GameID = "",
+        GameSegment = "",
+        LastNGames = 0,
+        LeagueID = "00",
+        Location = "",
+        Month = 0,
+        OpponentTeamID = 0,
+        Outcome = "",
+        Period = 0,
+        Position = "",
+        RookieYear = "",
+        SeasonSegment = "",
+        SeasonType = "Regular Season",
+        TeamID = 0,
+        VsConference = "",
+        VsDivision = ""
+      ),
+      add_headers(request_headers)
+    )
+  }
 
 #fetch_shots_by_team_id_and_season = function(team_id, season) {
 #  req(team_id, season)
