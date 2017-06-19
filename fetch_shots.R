@@ -111,6 +111,56 @@ fetch_shots_by_player_id_and_season = function(player_id, player2_id, player3_id
       ),
       add_headers(request_headers)
     )
+    
+    stop_for_status(request2)
+
+    data2 = content(request2)
+    
+    raw_shots_data2 = data2$resultSets[[1]]$rowSet
+    col_names = tolower(as.character(data2$resultSets[[1]]$headers))
+
+    if (length(raw_shots_data2) == 0) {
+      shots = data2.frame(
+        matrix(nrow = 0, ncol = length(col_names))
+      )
+    } else {
+      shots2 = data.frame(
+        matrix(
+          unlist(raw_shots_data),
+          ncol = length(col_names),
+          byrow = TRUE
+        )
+      )
+    }
+    
+    shots2 = tbl_df(shots2)
+    names(shots2) = col_names
+    
+    shots2 = mutate(shots2,
+    loc_x = as.numeric(as.character(loc_x)) / 10,
+    loc_y = as.numeric(as.character(loc_y)) / 10 + hoop_center_y,
+    shot_distance = as.numeric(as.character(shot_distance)),
+    shot_made_numeric = as.numeric(as.character(shot_made_flag)),
+    shot_made_flag = factor(shot_made_flag, levels = c("1", "0"), labels = c("made", "missed")),
+    shot_attempted_flag = as.numeric(as.character(shot_attempted_flag)),
+    shot_value = ifelse(tolower(shot_type) == "3pt field goal", 3, 2)
+  )
+
+  raw_league_avg_data = data$resultSets[[2]]$rowSet
+  league_avg_names = tolower(as.character(data$resultSets[[2]]$headers))
+  league_averages = tbl_df(data.frame(
+    matrix(unlist(raw_league_avg_data), ncol = length(league_avg_names), byrow = TRUE)
+  ))
+  names(league_averages) = league_avg_names
+  league_averages = mutate(league_averages,
+    fga = as.numeric(as.character(fga)),
+    fgm = as.numeric(as.character(fgm)),
+    fg_pct = as.numeric(as.character(fg_pct)),
+    shot_value = ifelse(shot_zone_basic %in% c("Above the Break 3", "Backcourt", "Left Corner 3", "Right Corner 3"), 3, 2)
+  )
+
+  return(list(player2 = shots2, league_averages = league_averages))
+
   }
 
   if(player3_id) {
