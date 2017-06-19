@@ -3,7 +3,10 @@ library(shiny)
 shinyServer(function(input, output, session) {
   current_player = reactive({
     req(input$player_name)
-    find_player_by_name(input$player_name)
+    if(input$player_name != "--none--" {
+      find_player_by_name(input$player_name)
+      }
+       else {print("you haven't selected a player")}
   })
 
   current_player_seasons = reactive({
